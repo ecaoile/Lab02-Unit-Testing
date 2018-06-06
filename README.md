@@ -5,7 +5,7 @@ CODE: Unit Tests &amp; Documentation assignment for Codefellows 401 ASP.NET cour
 **Version**: 1.0.0
 
 ## Overview
-This application provides a demonstration of how unit testing works.
+This application provides an ATM that lets users view balance, withdraw, or deposit money.
 
 ## Getting Started
 The following is required to run the program.
@@ -14,7 +14,7 @@ The following is required to run the program.
 3. No External NuGet packages are required for this application. 
 
 ## Example
-*Show them what looks like and how how to use the application.*
+![Lab02 Screenshot](Lab02-SS.jpg)
 
 ## Architecture
 This application is created using ASP.NET Core 2.1 Console applicaitons. <br />
@@ -23,6 +23,9 @@ This application is created using ASP.NET Core 2.1 Console applicaitons. <br />
 
 
 ## Change Log
-*Use this are to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+01-01-2001 10:00am - Created initial scaffolding files. <br />
+01-01-2001 11:00am - Main program functionality finished.<br />
+01-01-2001 12:00pm - Test program created with all passing tests.<br />
+01-01-2001 1:00pm - Added try, catch, finally, and throw.<br />
 
-01-01-2001 4:59pm - Added functionality to add and delete some things <br />
+
