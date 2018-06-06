@@ -2,9 +2,9 @@
 
 namespace Lab02_Unit_Testing
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Lab 02 ATM!");
             bool inService = true;
@@ -29,33 +29,56 @@ namespace Lab02_Unit_Testing
                 {
                     case "1":
                         myBalance = ViewBalance(myBalance);
-                        Console.WriteLine($"Your current balance is {myBalance}\n");
+                        Console.WriteLine($"Your current balance is {myBalance:c}\n");
                         break;
                     case "2":
-                        Console.WriteLine("withdraw money - placeholder for function");
                         Console.WriteLine("How much money would you like to withdraw?");
                         try
                         {
-                            decimal requested = Convert.ToDecimal(Console.ReadLine());
-                            if (requested > myBalance)
-                            {
+                            decimal myWithdrawl = Convert.ToDecimal(Console.ReadLine());
+
+                            if (myWithdrawl > myBalance)
                                 Console.WriteLine("You don't have that much money!\n");
-                            }
+                            
+                            else if (myWithdrawl < 0)
+                                Console.WriteLine("You can't withdraw negative amounts!");
+      
                             else
                             {
-                                myBalance = Withdraw(myBalance, requested);
-                                Console.WriteLine($"Successfully withdrew ${requested}.");
-                                Console.WriteLine($"Your current balance is ${myBalance}.\n");
+                                myBalance = Withdraw(myBalance, myWithdrawl);
+                                Console.WriteLine($"Successfully withdrew {myWithdrawl:c}.");
+                                Console.WriteLine($"Your current balance is {myBalance:c}.\n");
                             }
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
+                        }
+                        finally
+                        {
+                            Console.WriteLine("Withdrawal failed.");
                             Console.WriteLine("Returning to main menu.\n");
                         }
                         break;
                     case "3":
                         Console.WriteLine("add money - placeholder for function");
+                        Console.WriteLine("How much money would you like to deposit?");
+                        try
+                        {
+                            decimal myDeposit = Convert.ToDecimal(Console.ReadLine());
+                            myBalance = Deposit(myBalance, myDeposit);
+                            Console.WriteLine($"Thank you for your deposit of {myDeposit:c}.");
+                            Console.WriteLine($"Your balance is now {myBalance:c}.\n");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        finally
+                        {
+                            Console.WriteLine("Deposit failed.");
+                            Console.WriteLine("Returning to main menu.\n");
+                        }
                         break;
                     case "4":
                         inService = false;
@@ -73,10 +96,18 @@ namespace Lab02_Unit_Testing
             return myBalance;
         }
 
-        public static decimal Withdraw(decimal myBalance, decimal requested)
+        public static decimal Withdraw(decimal myBalance, decimal myWithdrawl)
         {
-            if (requested <= myBalance)
-                myBalance = myBalance - requested;
+            if (myWithdrawl <= myBalance && myWithdrawl >= 0)
+                myBalance = myBalance - myWithdrawl;
+
+            return myBalance;
+        }
+
+        public static decimal Deposit(decimal myBalance, decimal myDeposit)
+        {
+            if (myDeposit >= 0)
+                myBalance += myDeposit;
 
             return myBalance;
         }
