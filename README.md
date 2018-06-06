@@ -5,7 +5,7 @@ CODE: Unit Tests &amp; Documentation assignment for Codefellows 401 ASP.NET cour
 **Version**: 1.0.0
 
 ## Overview
-This application provides a demonstration of how unit testing works.
+This application provides an ATM that lets users view balance, withdraw, or deposit money.
 
 ## Getting Started
 The following is required to run the program.
