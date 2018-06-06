@@ -24,8 +24,24 @@ namespace Lab02_Unit_Testing
                     userChoice = Console.ReadLine();
                 }
 
-                if (userChoice == "4")
-                    inService = false; 
+                switch (userChoice)
+                {
+                    case "1":
+                        Console.WriteLine("viewing balance - placeholder for function");
+                        break;
+                    case "2":
+                        Console.WriteLine("withdraw money - placeholder for function");
+                        break;
+                    case "3":
+                        Console.WriteLine("add money - placeholder for function");
+                        break;
+                    case "4":
+                        inService = false;
+                        break;
+                    default:
+                        break;
+                }
+
             }
             Console.WriteLine("Thank you for using a Lab 02 ATM. Have a nice day!");
             Console.ReadLine();
