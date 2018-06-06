@@ -6,8 +6,9 @@ namespace Lab02_Unit_Testing
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the Lab 02 ATM!");
+            Console.WriteLine("Welcome to Lab 02 ATM!");
             bool inService = true;
+            decimal myBalance = 555.55m;
             while (inService == true)
             {
                 Console.WriteLine("How can we help you today?");
@@ -27,10 +28,31 @@ namespace Lab02_Unit_Testing
                 switch (userChoice)
                 {
                     case "1":
-                        Console.WriteLine("viewing balance - placeholder for function");
+                        myBalance = ViewBalance(myBalance);
+                        Console.WriteLine($"Your current balance is {myBalance}\n");
                         break;
                     case "2":
                         Console.WriteLine("withdraw money - placeholder for function");
+                        Console.WriteLine("How much money would you like to withdraw?");
+                        try
+                        {
+                            decimal requested = Convert.ToDecimal(Console.ReadLine());
+                            if (requested > myBalance)
+                            {
+                                Console.WriteLine("You don't have that much money!\n");
+                            }
+                            else
+                            {
+                                myBalance = Withdraw(myBalance, requested);
+                                Console.WriteLine($"Successfully withdrew ${requested}.");
+                                Console.WriteLine($"Your current balance is ${myBalance}.\n");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Returning to main menu.\n");
+                        }
                         break;
                     case "3":
                         Console.WriteLine("add money - placeholder for function");
@@ -41,10 +63,22 @@ namespace Lab02_Unit_Testing
                     default:
                         break;
                 }
-
             }
-            Console.WriteLine("Thank you for using a Lab 02 ATM. Have a nice day!");
+            Console.WriteLine("\nThank you for using Lab 02 ATM. Have a nice day!");
             Console.ReadLine();
+        }
+
+        public static decimal ViewBalance(decimal myBalance)
+        {
+            return myBalance;
+        }
+
+        public static decimal Withdraw(decimal myBalance, decimal requested)
+        {
+            if (requested <= myBalance)
+                myBalance = myBalance - requested;
+
+            return myBalance;
         }
     }
 }
