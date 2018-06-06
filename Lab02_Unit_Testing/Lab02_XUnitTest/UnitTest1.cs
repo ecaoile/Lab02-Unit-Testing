@@ -7,13 +7,6 @@ namespace Lab02_XUnitTest
 {
     public class UnitTest1
     {
-        [Fact]
-        public void CanViewBalance()
-        {
-            decimal tempBalance = 555.55m;
-            Assert.Equal(555.55m, ViewBalance(tempBalance));
-        }
-
         [Theory]
         [InlineData(555.55, 44.45, 600)]
         [InlineData(500, 55.55, 555.55)]

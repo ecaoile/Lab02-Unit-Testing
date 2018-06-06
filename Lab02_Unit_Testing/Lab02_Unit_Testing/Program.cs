@@ -6,11 +6,13 @@ namespace Lab02_Unit_Testing
     {
         public static void Main(string[] args)
         {
+            // welcome message and declaration of initial values
             Console.WriteLine("Welcome to Lab 02 ATM!");
             bool inService = true;
             decimal myBalance = 555.55m;
             while (inService == true)
             {
+                // main menu that appears at the beginning of every loop
                 Console.WriteLine("How can we help you today?");
                 Console.WriteLine("1. View Balance");
                 Console.WriteLine("2. Withdraw Money");
@@ -19,17 +21,20 @@ namespace Lab02_Unit_Testing
 
                 string userChoice = Console.ReadLine();
 
+                // loops until user chooses a valid menu option
                 while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4")
                 {
                     Console.WriteLine("You did not choose a valid option. Please choose a number between 1 and 4");
                     userChoice = Console.ReadLine();
                 }
 
+                // switch case to handle the different ATM operations
                 switch (userChoice)
                 {
                     case "1":
-                        myBalance = ViewBalance(myBalance);
-                        Console.WriteLine($"Your current balance is {myBalance:c}\n");
+                        //myBalance = ViewBalance(myBalance);
+                        Console.WriteLine($"Your current balance is {myBalance:c}.");
+                        Console.WriteLine("Returning to main menu.\n");
                         break;
                     case "2":
                         Console.WriteLine("\nHow much money would you like to withdraw?");
@@ -97,15 +102,18 @@ namespace Lab02_Unit_Testing
                         break;
                 }
             }
+
+            // closing message before exit
             Console.WriteLine("\nThank you for using Lab 02 ATM. Have a nice day!");
             Console.ReadLine();
         }
 
-        public static decimal ViewBalance(decimal myBalance)
-        {
-            return myBalance;
-        }
-
+        /// <summary>
+        /// allows user to withdraw money from their bank account
+        /// </summary>
+        /// <param name="myBalance">the user's current balance</param>
+        /// <param name="myWithdrawl">the amount the user wishes to withdraw</param>
+        /// <returns>remaining balance after withdrawal</returns>
         public static decimal Withdraw(decimal myBalance, decimal myWithdrawl)
         {
             if (myWithdrawl <= myBalance && myWithdrawl >= 0)
@@ -114,6 +122,12 @@ namespace Lab02_Unit_Testing
             return myBalance;
         }
 
+        /// <summary>
+        /// allows user to deposit money to their bank account
+        /// </summary>
+        /// <param name="myBalance">the user's current balance</param>
+        /// <param name="myDeposit">the amount the user wishes to deposit</param>
+        /// <returns>remaining balance after deposit</returns>
         public static decimal Deposit(decimal myBalance, decimal myDeposit)
         {
             if (myDeposit >= 0)
