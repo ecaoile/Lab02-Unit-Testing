@@ -32,17 +32,16 @@ namespace Lab02_Unit_Testing
                         Console.WriteLine($"Your current balance is {myBalance:c}\n");
                         break;
                     case "2":
-                        Console.WriteLine("How much money would you like to withdraw?");
+                        Console.WriteLine("\nHow much money would you like to withdraw?");
                         try
                         {
                             decimal myWithdrawl = Convert.ToDecimal(Console.ReadLine());
 
                             if (myWithdrawl > myBalance)
                                 Console.WriteLine("You don't have that much money!\n");
-                            
                             else if (myWithdrawl < 0)
                                 Console.WriteLine("You can't withdraw negative amounts!");
-      
+
                             else
                             {
                                 myBalance = Withdraw(myBalance, myWithdrawl);
@@ -50,19 +49,24 @@ namespace Lab02_Unit_Testing
                                 Console.WriteLine($"Your current balance is {myBalance:c}.\n");
                             }
                         }
+                        catch(FormatException)
+                        {
+                            Console.WriteLine("Error: you didn't enter a valid number!");
+                            Console.WriteLine("Withdrawal failed.");
+                        }
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
+                            Console.WriteLine("Withdrawal failed.");
+                            throw;
                         }
                         finally
                         {
-                            Console.WriteLine("Withdrawal failed.");
                             Console.WriteLine("Returning to main menu.\n");
                         }
                         break;
                     case "3":
-                        Console.WriteLine("add money - placeholder for function");
-                        Console.WriteLine("How much money would you like to deposit?");
+                        Console.WriteLine("\nHow much money would you like to deposit?");
                         try
                         {
                             decimal myDeposit = Convert.ToDecimal(Console.ReadLine());
@@ -70,13 +74,19 @@ namespace Lab02_Unit_Testing
                             Console.WriteLine($"Thank you for your deposit of {myDeposit:c}.");
                             Console.WriteLine($"Your balance is now {myBalance:c}.\n");
                         }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Error: you didn't enter a valid number!");
+                            Console.WriteLine("Deposit failed.");
+                        }
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
+                            Console.WriteLine("Deposit failed.");
+                            throw;
                         }
                         finally
                         {
-                            Console.WriteLine("Deposit failed.");
                             Console.WriteLine("Returning to main menu.\n");
                         }
                         break;
