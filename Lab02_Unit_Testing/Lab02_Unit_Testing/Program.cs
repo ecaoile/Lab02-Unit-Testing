@@ -32,7 +32,6 @@ namespace Lab02_Unit_Testing
                 switch (userChoice)
                 {
                     case "1":
-                        //myBalance = ViewBalance(myBalance);
                         Console.WriteLine($"Your current balance is {myBalance:c}.");
                         Console.WriteLine("Returning to main menu.\n");
                         break;
