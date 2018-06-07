@@ -75,9 +75,14 @@ namespace Lab02_Unit_Testing
                         try
                         {
                             decimal myDeposit = Convert.ToDecimal(Console.ReadLine());
-                            myBalance = Deposit(myBalance, myDeposit);
-                            Console.WriteLine($"Thank you for your deposit of {myDeposit:c}.");
-                            Console.WriteLine($"Your balance is now {myBalance:c}.\n");
+                            if (myDeposit < 0)
+                                Console.WriteLine("You can't withdraw negative amounts!");
+                            else
+                            {
+                                myBalance = Deposit(myBalance, myDeposit);
+                                Console.WriteLine($"Thank you for your deposit of {myDeposit:c}.");
+                                Console.WriteLine($"Your balance is now {myBalance:c}.\n");
+                            }
                         }
                         catch (FormatException)
                         {
